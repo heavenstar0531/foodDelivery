@@ -5,5 +5,4 @@
 
 <section>
     <h4>${message1}</h4>
-    <p>${message2}</p>
 </section>

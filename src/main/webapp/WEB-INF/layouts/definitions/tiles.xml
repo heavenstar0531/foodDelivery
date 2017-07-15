@@ -4,7 +4,7 @@
 
 <tiles-definitions>
 
-    <!--Base template for CLIENTS -->
+    <!--Layout template for CLIENTS -->
     <definition name="baseLayout" template="/WEB-INF/layouts/template/baseLayout.jsp">
         <put-attribute name="title" value="Sample Title"/>
         <put-attribute name="heading" value=""/>
@@ -14,7 +14,7 @@
         <put-attribute name="footer" value="/WEB-INF/layouts/template/footer.jsp"/>
     </definition>
 
-    <!--Base template for ADMIN-->
+    <!--Layout template for ADMIN-->
     <definition name="adminLayout" template="/WEB-INF/layouts/template/adminLayout.jsp">
         <put-attribute name="adminTitle" value="Sample Title"/>
         <put-attribute name="adminHeading" value=""/>
@@ -24,20 +24,35 @@
         <put-attribute name="adminFooter" value="/WEB-INF/layouts/template/footer.jsp"/>
     </definition>
 
-    <!--CLIENT home-->
+    <!--Home for CLIENTS-->
     <definition name="home" extends="baseLayout">
         <put-attribute name="title" value=""/>
         <put-attribute name="heading" value="Welcome to Food Delivery"/>
-        <put-attribute name="tag" value="Order your favorite foods easily."/>
+        <put-attribute name="tag" value="Order your favorite foods easily"/>
         <put-attribute name="content" value="/WEB-INF/views/home.jsp"/>
     </definition>
 
-    <!--ADMIN home-->
+    <!--Home for ADMIN-->
     <definition name="adminHome" extends="adminLayout">
         <put-attribute name="adminTitle" value="FoodDelivery"/>
         <put-attribute name="adminHeading" value="Welcome to the admin page"/>
-        <put-attribute name="adminTag" value="Manage your sales."/>
+        <put-attribute name="adminTag" value="Manage your sales"/>
         <put-attribute name="adminContent" value="/WEB-INF/views/adminHome.jsp"/>
     </definition>
 
+    <!--Ingredients for ADMIN-->
+    <definition name="ingredients" extends="adminLayout">
+        <put-attribute name="adminTitle" value="FoodDelivery"/>
+        <put-attribute name="adminHeading" value="Ingredients"/>
+        <put-attribute name="adminTag" value="They are all listed here"/>
+        <put-attribute name="adminContent" value="/WEB-INF/views/ingredients.jsp"/>
+    </definition>
+
+    <!--Add ingredient for ADMIN-->
+    <definition name="addIngredient" extends="adminLayout">
+        <put-attribute name="adminTitle" value="FoodDelivery"/>
+        <put-attribute name="adminHeading" value="Add Ingredients"/>
+        <put-attribute name="adminTag" value=""/>
+        <put-attribute name="adminContent" value="/WEB-INF/views/addIngredient.jsp"/>
+    </definition>
 </tiles-definitions>
