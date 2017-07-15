@@ -11,14 +11,18 @@
             <legend>Form</legend>
             <%--ID field--%>
             <div class="form-group">
-                <label class="control-label col-lg-2 col-lg-2">ID</label>
+                <label class="control-label col-lg-2 col-lg-2">
+                    <spring:message code="addIngredient.form.ingredientId.label" />
+                </label>
                 <div class="col-lg-10">
                     <form:input id="id" path="id" type="text" class="form:input-large"/>
                 </div>
             </div>
             <%--Name field--%>
             <div class="form-group">
-                <label class="control-label col-lg-2 col-lg-2" for="name">Name</label>
+                <label class="control-label col-lg-2 col-lg-2" for="name">
+                    <spring:message code="addIngredient.form.ingredientName.label"/>
+                </label>
                 <div class="col-lg-10">
                     <form:input id="name" path="name" type="text" class="form:input-large"/>
                 </div>

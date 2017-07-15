@@ -25,7 +25,11 @@
         </ul>
     </div>
 </nav>
-
+<section>
+    <div class="pull-right" style="padding-right:50px">
+        <a href="?language=en" >English</a>|<a href="?language=pt_br" >Portuguese</a>
+    </div>
+</section>
 <div class="container">
     <div class="jumbotron">
         <h2>
