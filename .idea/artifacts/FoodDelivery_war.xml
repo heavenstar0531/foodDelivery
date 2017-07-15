@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
   <artifact type="war" name="FoodDelivery:war">
-    <output-path>$PROJECT_DIR$/out/artifacts/FoodDelivery_war</output-path>
-    <root id="archive" name="FoodDelivery_war.war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="food-delivery-1.0-SNAPSHOT.war">
       <element id="artifact" artifact-name="FoodDelivery:war exploded" />
     </root>
   </artifact>

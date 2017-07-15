@@ -36,12 +36,17 @@ public class HomeController {
                 new Ingredient("I6", "Cereal Four")
         );
 
-        ingredientService.save(ingredients);
-        List<Ingredient> ingredientsFromMongo = ingredientService.readAll();
+//        ingredientService.save(ingredients);
+//        List<Ingredient> ingredientsFromMongo = ingredientService.readAll();
 
         model.addAttribute("message1", "This is a message from HomeController. See data from MongoDB below:");
-        model.addAttribute("message2", ingredientsFromMongo.toString());
+//        model.addAttribute("message2", ingredientsFromMongo.toString());
         return "home";
+    }
+
+    @RequestMapping("/admin")
+    public String homeAdmin() {
+        return "adminHome";
     }
 
 }

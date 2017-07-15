@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+    <!--Base template for CLIENTS -->
+    <definition name="baseLayout" template="/WEB-INF/layouts/template/baseLayout.jsp">
+        <put-attribute name="title" value="Sample Title"/>
+        <put-attribute name="heading" value=""/>
+        <put-attribute name="tagline" value=""/>
+        <put-attribute name="navigation" value="/WEB-INF/layouts/template/navigation.jsp"/>
+        <put-attribute name="content" value=""/>
+        <put-attribute name="footer" value="/WEB-INF/layouts/template/footer.jsp"/>
+    </definition>
+
+    <!--Base template for ADMIN-->
+    <definition name="adminLayout" template="/WEB-INF/layouts/template/adminLayout.jsp">
+        <put-attribute name="adminTitle" value="Sample Title"/>
+        <put-attribute name="adminHeading" value=""/>
+        <put-attribute name="adminTag" value=""/>
+        <put-attribute name="adminNavigation" value="/WEB-INF/layouts/template/adminNavigation.jsp"/>
+        <put-attribute name="adminContent" value=""/>
+        <put-attribute name="adminFooter" value="/WEB-INF/layouts/template/footer.jsp"/>
+    </definition>
+
+    <!--CLIENT home-->
+    <definition name="home" extends="baseLayout">
+        <put-attribute name="title" value=""/>
+        <put-attribute name="heading" value="Welcome to Food Delivery"/>
+        <put-attribute name="tag" value="Order your favorite foods easily."/>
+        <put-attribute name="content" value="/WEB-INF/views/home.jsp"/>
+    </definition>
+
+    <!--ADMIN home-->
+    <definition name="adminHome" extends="adminLayout">
+        <put-attribute name="adminTitle" value="FoodDelivery"/>
+        <put-attribute name="adminHeading" value="Welcome to the admin page"/>
+        <put-attribute name="adminTag" value="Manage your sales."/>
+        <put-attribute name="adminContent" value="/WEB-INF/views/adminHome.jsp"/>
+    </definition>
+
+</tiles-definitions>
