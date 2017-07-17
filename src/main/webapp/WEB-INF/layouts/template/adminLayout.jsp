@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%--
   User: mz
@@ -20,8 +21,15 @@
         <div class="navbar-header">
             <a class="navbar-brand" href="/">FoodDelivery</a>
         </div>
+        <%--Add a list of menu options from navigation file--%>
         <ul class="nav navbar-nav">
             <tiles:insertAttribute name="adminNavigation"/>
+        </ul>
+        <%--Logout button--%>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="<c:url value="/logout"/>">
+                <span class="glyphicon glyphicon-log-out"></span>Logout</a>
+            </li>
         </ul>
     </div>
 </nav>

@@ -55,4 +55,13 @@
         <put-attribute name="adminTag" value=""/>
         <put-attribute name="adminContent" value="/WEB-INF/views/addIngredient.jsp"/>
     </definition>
+
+    <!--Login-->
+    <definition name="login" extends="baseLayout">
+        <put-attribute name="title" value="Login" />
+        <put-attribute name="heading" value="Admin area" />
+        <put-attribute name="tagline" value="" />
+        <put-attribute name="content" value="/WEB-INF/views/login.jsp" />
+    </definition>
+
 </tiles-definitions>
