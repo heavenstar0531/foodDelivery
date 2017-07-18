@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Objects;
-
 import static java.util.stream.Collectors.toList;
 
 /**
@@ -29,6 +27,8 @@ public class ProductController {
     public ProductController(ProductService productService, IngredientService ingredientService) {
         this.productService = productService;
         this.ingredientService = ingredientService;
+
+        // temporary data for manual testing purpose
         productService.save(RootConfig.PRODUCT_01);
         productService.save(RootConfig.PRODUCT_02);
         productService.save(RootConfig.PRODUCT_03);
@@ -40,6 +40,12 @@ public class ProductController {
         return "product";
     }
 
+    @RequestMapping("/admin/product")
+    public String getProductByIdForAdmin(@RequestParam("id") String id, Model model) {
+        model.addAttribute("product", productService.findOne(id));
+        return "adminProduct";
+    }
+
     /**
      * Read all active products.
      */
@@ -49,11 +55,20 @@ public class ProductController {
         return "products";
     }
 
+    /**
+     * Read all products for Admin.
+     */
+    @RequestMapping(value="/admin/products")
+    public String readAllForAdmin(Model model) {
+        model.addAttribute("products", productService.findAll());
+        return "adminProducts";
+    }
+
     @RequestMapping(value = "/admin/products/add", method = RequestMethod.GET)
     public String getAddNew(Model model) {
         Product p = new Product();
         model.addAttribute("newProduct", p);
-//        model.addAttribute("availableIngredients", ingredientService.findAll());
+        model.addAttribute("availableIngredients", ingredientService.findAll());
         return "addProduct";
     }
 

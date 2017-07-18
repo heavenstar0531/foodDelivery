@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+    <!--Layout template-->
+    <definition name="adminBaseLayout" template="/WEB-INF/layouts/template/adminBaseLayout.jsp">
+        <put-attribute name="adminTitle" value="Food Delivery"/>
+        <put-attribute name="adminHeading" value=""/>
+        <put-attribute name="adminTag" value=""/>
+        <put-attribute name="adminNavigation" value="/WEB-INF/layouts/template/adminNavigation.jsp"/>
+        <put-attribute name="adminContent" value=""/>
+        <put-attribute name="adminFooter" value="/WEB-INF/layouts/template/footer.jsp"/>
+    </definition>
+
+    <!--Home-->
+    <definition name="adminHome" extends="adminBaseLayout">
+        <put-attribute name="adminHeading" value="Welcome to the  page"/>
+        <put-attribute name="adminTag" value="Manage your sales"/>
+        <put-attribute name="adminContent" value="/WEB-INF/views/adminHome.jsp"/>
+    </definition>
+
+    <!--Ingredients-->
+    <definition name="adminIngredients" extends="adminBaseLayout">
+        <put-attribute name="adminHeading" value="Ingredients"/>
+        <put-attribute name="adminTag" value="They are all listed here"/>
+        <put-attribute name="adminContent" value="/WEB-INF/views/adminIngredients.jsp"/>
+    </definition>
+
+    <!--Add ingredient-->
+    <definition name="addIngredient" extends="adminBaseLayout">
+        <put-attribute name="adminHeading" value="Add Ingredients"/>
+        <put-attribute name="adminTag" value=""/>
+        <put-attribute name="adminContent" value="/WEB-INF/views/addIngredient.jsp"/>
+    </definition>
+
+    <!--Add product-->
+    <definition name="addProduct" extends="adminBaseLayout">
+        <put-attribute name="adminHeading" value="Add Products"/>
+        <put-attribute name="adminContent" value="/WEB-INF/views/addProduct.jsp"/>
+    </definition>
+
+    <!--All products-->
+    <definition name="adminProducts" extends="adminBaseLayout">
+        <put-attribute name="adminHeading" value="Add Products"/>
+        <put-attribute name="adminContent" value="/WEB-INF/views/adminProducts.jsp"/>
+    </definition>
+
+    <!--Single product-->
+    <definition name="adminProduct" extends="adminBaseLayout">
+        <put-attribute name="adminHeading" value="Product"/>
+        <put-attribute name="adminContent" value="/WEB-INF/views/adminProduct.jsp"/>
+    </definition>
+
+</tiles-definitions>

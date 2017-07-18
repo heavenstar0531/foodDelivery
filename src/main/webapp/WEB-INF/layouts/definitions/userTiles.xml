@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+    <!--Layout template -->
+    <definition name="userBaseLayout" template="/WEB-INF/layouts/template/userBaseLayout.jsp">
+        <put-attribute name="userTitle" value="Food Delivery"/>
+        <put-attribute name="userHeading" value=""/>
+        <put-attribute name="userTag" value=""/>
+        <put-attribute name="userNavigation" value="/WEB-INF/layouts/template/userNavigation.jsp"/>
+        <put-attribute name="userContent" value=""/>
+        <put-attribute name="userFooter" value="/WEB-INF/layouts/template/footer.jsp"/>
+    </definition>
+
+    <!--Home-->
+    <definition name="home" extends="userBaseLayout">
+        <put-attribute name="userHeading" value="Welcome to Food Delivery"/>
+        <put-attribute name="userTag" value="Order your favorite foods easily"/>
+        <put-attribute name="userContent" value="/WEB-INF/views/home.jsp"/>
+    </definition>
+
+    <!--Login-->
+    <definition name="login" extends="userBaseLayout">
+        <put-attribute name="userHeading" value="Admin area"/>
+        <put-attribute name="userTag" value=""/>
+        <put-attribute name="userContent" value="/WEB-INF/views/login.jsp"/>
+    </definition>
+
+    <!--Single product-->
+    <definition name="product" extends="userBaseLayout">
+        <put-attribute name="userHeading" value="Product"/>
+        <put-attribute name="userTag" value="Details"/>
+        <put-attribute name="userContent" value="/WEB-INF/views/product.jsp"/>
+    </definition>
+
+    <!--All products-->
+    <definition name="products" extends="userBaseLayout">
+        <put-attribute name="userHeading" value="Products"/>
+        <put-attribute name="userTag" value="All the food waiting for you"/>
+        <put-attribute name="userContent" value="/WEB-INF/views/products.jsp"/>
+    </definition>
+
+</tiles-definitions>

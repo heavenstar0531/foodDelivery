@@ -44,20 +44,21 @@ public class IngredientControllerTest {
     /**
      * FAIL
      * The performed URL shows a list of ingredients.
-     * The List attribute is sent to ingredients.jsp through Model object.
+     * The List attribute is sent to adminIngredients.jsp through Model object.
+     * * A wrong object name is given at 'andExcept' method.
      */
     @Test
     public void attributeIngredientListShouldNotExist() throws Exception {
         // "ingredient" does not exist
         mockMvc.perform(get("/admin/ingredients"))
-                .andExpect(model().attributeDoesNotExist("ingredient"));
+                .andExpect(model().attributeDoesNotExist("nonExistentAttribute"));
     }
 
     /**
      * PASS
      */
     @Test
-    public void attributeIngredientsListShouldExist() throws Exception {
+    public void attributeIngredientListShouldExist() throws Exception {
         mockMvc.perform(get("/admin/ingredients"))
                 .andExpect(model().attributeExists("ingredients"));
     }
@@ -70,7 +71,7 @@ public class IngredientControllerTest {
     @Test
     public void attributeNewIngredientShouldNotExist() throws Exception {
         mockMvc.perform(get("/admin/ingredients/add"))
-                .andExpect(model().attributeDoesNotExist("newIngredients"));
+                .andExpect(model().attributeDoesNotExist("nonExistentAttribute"));
     }
 
     /**

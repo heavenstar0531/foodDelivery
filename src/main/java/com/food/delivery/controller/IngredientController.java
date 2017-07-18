@@ -24,6 +24,8 @@ public class IngredientController {
     @Autowired
     public IngredientController(IngredientService ingredientService) {
         this.ingredientService = ingredientService;
+
+        // temporary data for manual testing purpose
         ingredientService.save(RootConfig.INGREDIENTS_01);
         ingredientService.save(RootConfig.INGREDIENTS_02);
     }
@@ -32,7 +34,7 @@ public class IngredientController {
     public String readAll(Model model) {
         List<Ingredient> ingredientsFromMongo = ingredientService.findAll();
         model.addAttribute("ingredients", ingredientsFromMongo);
-        return "ingredients";
+        return "adminIngredients";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)

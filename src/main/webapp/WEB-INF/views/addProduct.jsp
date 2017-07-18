@@ -39,8 +39,13 @@
             <div class="form-group">
                 <label class="control-label col-lg-2 col-lg-2" for="name">
                     <spring:message code="addProduct.form.productIngredients.label"/>
-                </label>
                     <%--TODO: provide all available ingredients to create a product with multiple selection--%>
+                </label>
+                <%--checkboxes try--%>
+                <%--<ul>
+                    <form:checkboxes element="li" path="ingredients" items="${availableIngredients}"/>
+                </ul>--%>
+                <%--select try--%>
                 <%--<form:select path="ingredients" multiple="true">
                     <form:options items="${availableIngredients}" itemValue="name" itemLabel="name"/>
                 </form:select>--%>

@@ -8,10 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Created by mz on 14/07/17.
  */
 @Controller
-@RequestMapping("/")
 public class HomeController {
 
-    @RequestMapping
+    @RequestMapping("/")
     public String home(Model model) {
         model.addAttribute("message1", "This is a message from HomeController.");
         return "home";

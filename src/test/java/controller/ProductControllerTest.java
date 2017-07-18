@@ -24,9 +24,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
  * Created by mz on 17/07/17.
@@ -52,33 +50,51 @@ public class ProductControllerTest {
      * FAIL
      * The performed URL shows a list of products.
      * The List attribute is sent to products.jsp through Model object.
-     * A wrong URL is given at andExcept method.
+     * A wrong object name is given at 'andExcept' method.
      */
     @Test
     public void attributeProductListShouldNotExist() throws Exception {
-        // "ingredient" does not exist
         mockMvc.perform(get("/products"))
-                .andExpect(model().attributeDoesNotExist("product"));
+                .andExpect(model().attributeDoesNotExist("nonExistentAttribute"));
     }
 
     /**
      * PASS
      */
     @Test
-    public void attributeProductsListShouldExist() throws Exception {
+    public void attributeProductListShouldExist() throws Exception {
         mockMvc.perform(get("/products"))
                 .andExpect(model().attributeExists("products"));
     }
 
     /**
      * FAIL
-     * The performed url instantiates a Product object named 'newProduct' with @ModelAttribute in addProduct.jsp
-     * A wrong object name is given at andExcept method.
+     * A wrong object name is given at 'andExcept' method.
+     */
+    @Test
+    public void attributeProductListShouldNotExistForAdmin() throws Exception {
+        mockMvc.perform(get("/admin/products"))
+                .andExpect(model().attributeDoesNotExist("nonExistentAttribute"));
+    }
+
+    /**
+     * PASS
+     */
+    @Test
+    public void attributeProductListShouldExistForAdmin() throws Exception {
+        mockMvc.perform(get("/admin/products"))
+                .andExpect(model().attributeExists("products"));
+    }
+
+    /**
+     * FAIL
+     * The performed URL instantiates a Product object named 'newProduct' with @ModelAttribute in addProduct.jsp
+     * A wrong object name is given at 'andExcept' method.
      */
     @Test
     public void attributeNewProductShouldNotExist() throws Exception {
         mockMvc.perform(get("/admin/products/add"))
-                .andExpect(model().attributeDoesNotExist("newProducts"));
+                .andExpect(model().attributeDoesNotExist("nonExistentAttribute"));
     }
 
     /**
