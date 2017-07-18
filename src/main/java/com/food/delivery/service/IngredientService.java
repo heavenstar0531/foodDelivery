@@ -13,6 +13,9 @@ public interface IngredientService {
 
     void save(Iterable<Ingredient> it);
 
-    List<Ingredient> readAll();
+    List<Ingredient> findAll();
 
+    Ingredient findOne(String id);
+
+    void delete(String id);
 }

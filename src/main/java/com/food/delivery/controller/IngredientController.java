@@ -1,5 +1,6 @@
 package com.food.delivery.controller;
 
+import com.food.delivery.config.RootConfig;
 import com.food.delivery.model.Ingredient;
 import com.food.delivery.service.IngredientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,20 +24,13 @@ public class IngredientController {
     @Autowired
     public IngredientController(IngredientService ingredientService) {
         this.ingredientService = ingredientService;
-    /*    List<Ingredient> readIngredients = Arrays.asList(
-                new Ingredient("ING-1", "Banana"),
-                new Ingredient("ING-2", "Papaya"),
-                new Ingredient("ING-3", "Apple"),
-                new Ingredient("ING-4", "Pineapple"),
-                new Ingredient("ING-5", "Granola"),
-                new Ingredient("ING-6", "Cereal Four")
-        );
-        ingredientService.save(readIngredients);*/
+        ingredientService.save(RootConfig.INGREDIENTS_01);
+        ingredientService.save(RootConfig.INGREDIENTS_02);
     }
 
     @RequestMapping
     public String readAll(Model model) {
-        List<Ingredient> ingredientsFromMongo = ingredientService.readAll();
+        List<Ingredient> ingredientsFromMongo = ingredientService.findAll();
         model.addAttribute("ingredients", ingredientsFromMongo);
         return "ingredients";
     }

@@ -4,6 +4,6 @@
 --%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
-<li><a href="<spring:url value="/"/>">Menu</a></li>
+<li><a href="<spring:url value="/products"/>">Menu</a></li>
 
 

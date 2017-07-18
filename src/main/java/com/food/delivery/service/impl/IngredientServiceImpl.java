@@ -29,8 +29,18 @@ public class IngredientServiceImpl implements IngredientService {
         ingredientRepository.save(it);
     }
 
-    public List<Ingredient> readAll() {
+    public List<Ingredient> findAll() {
         return ingredientRepository.findAll();
+    }
+
+    @Override
+    public Ingredient findOne(String id) {
+        return ingredientRepository.findOne(id);
+    }
+
+    @Override
+    public void delete(String id) {
+        ingredientRepository.delete(id);
     }
 
 }
