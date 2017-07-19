@@ -17,8 +17,8 @@ import java.util.List;
 public class RootConfig {
 
     /**
-     * these static data are used only for testing the application manually
-     * for JUnit tests see src/test
+     * These static data are used only for testing the application manually.
+     * For JUnit tests see src/test
      */
 
     private static Ingredient INGREDIENT_01 = new Ingredient("ING-1", "Banana");
@@ -36,7 +36,7 @@ public class RootConfig {
     public static final List<Ingredient> INGREDIENTS_02 = Arrays.asList(
             INGREDIENT_06, INGREDIENT_05, INGREDIENT_07);
 
-    public static final Product PRODUCT_01 = new Product("P1", "Avocado Fruit Shake 500mL",
+        public static final Product PRODUCT_01 = new Product("P1", "Avocado Fruit Shake 500mL",
             INGREDIENTS_01,"An awesome avocado shake with all potassium you need",
             new BigDecimal(6), "Drink", true);
 
@@ -45,6 +45,6 @@ public class RootConfig {
             new BigDecimal(8), "Drink", true);
 
     public static final Product PRODUCT_03 = new Product("P0", "ShouldNotAppearProduct",
-            INGREDIENTS_02, "This is an description of an product that should not be visible on the page",
+            INGREDIENTS_02, "This is an description of an product that should not be visible for users because is not active",
             new BigDecimal(8), "Drink", false);
 }

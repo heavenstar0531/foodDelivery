@@ -11,6 +11,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import java.io.File;
 
 import static java.util.stream.Collectors.toList;
 
@@ -58,7 +64,7 @@ public class ProductController {
     /**
      * Read all products for Admin.
      */
-    @RequestMapping(value="/admin/products")
+    @RequestMapping(value = "/admin/products")
     public String readAllForAdmin(Model model) {
         model.addAttribute("products", productService.findAll());
         return "adminProducts";
@@ -72,8 +78,28 @@ public class ProductController {
         return "addProduct";
     }
 
+    /**
+     * Creates a new product.
+     *
+     * @param request - Used to get the application path in the server.
+     *                Spring will fill this request parameter with the actual HTTP request
+     */
     @RequestMapping(value = "/admin/products/add", method = RequestMethod.POST)
-    public String processAddNew(@ModelAttribute Product newProduct) {
+    public String processAddNew(@ModelAttribute Product newProduct, HttpServletRequest request) {
+
+        // Gets uploaded image
+        MultipartFile image = newProduct.getImage();
+        // The root directory of the application in the server
+        String rootDirectory = request.getSession().getServletContext().getRealPath("/");
+        if (image != null && !image.isEmpty()) {
+            try {
+                // Saves the file in the server so it can be available under the root directory of the application at runtime
+                image.transferTo(new File(rootDirectory + "resources/images/" + newProduct.getId() + ".jpg"));
+            } catch (Exception e) {
+                throw new RuntimeException("Product Image saving failed", e);
+            }
+        }
+
         productService.save(newProduct);
         return "redirect:/admin/products/add";
     }

@@ -7,10 +7,9 @@
 
 <section class="container" <%--ng-app="cartApp"--%>>
     <div class="row">
-        <%--<div class="col-md-5">
-            <img src="<c:url value="/img/${product.id}.png"></c:url>"
-                 alt="image" style="width: 100%" />
-        </div>--%>
+        <div class="col-md-5">
+            <img src="<c:url value="/img/${product.id}.jpg"></c:url>" alt="image" style="width: 100%" />
+        </div>
 
         <div class="col-md-5">
             <h3>${product.name}</h3>

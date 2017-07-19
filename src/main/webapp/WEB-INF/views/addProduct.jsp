@@ -5,7 +5,8 @@
   Date: 17/07/17
 --%>
 <section class="container">
-    <form:form method="POST" modelAttribute="newProduct" class="form-horizontal">
+    <%--uses multipart in enctype for file upload--%>
+    <form:form method="POST" modelAttribute="newProduct" class="form-horizontal" enctype="multipart/form-data">
         <fieldset>
             <legend>Form</legend>
                 <%--ID field--%>
@@ -76,6 +77,15 @@
                 <div class="col-lg-10">
                     <form:radiobutton id="active" path="active" value="true"/> True
                     <form:radiobutton id="active" path="active" value="false"/> False
+                </div>
+            </div>
+            <%--Image upload--%>
+            <div class="form-group">
+                <label class="control-label col-lg-2" for="image">
+                    <spring:message code="addProduct.form.productImage.label" />
+                </label>
+                <div class="col-lg-10">
+                    <form:input id="image" path="image" type="file" class="form:input-large" />
                 </div>
             </div>
                 <%--Submit button--%>

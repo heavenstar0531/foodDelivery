@@ -1,7 +1,9 @@
 package com.food.delivery.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -20,6 +22,8 @@ public class Product {
     private String description;
     private BigDecimal price;
     private boolean active;
+    @Transient
+    private MultipartFile image;
 
     public Product() {
     }
@@ -88,5 +92,13 @@ public class Product {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public MultipartFile getImage() {
+        return image;
+    }
+
+    public void setImage(MultipartFile image) {
+        this.image = image;
     }
 }
