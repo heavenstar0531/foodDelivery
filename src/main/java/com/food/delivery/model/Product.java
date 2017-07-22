@@ -1,16 +1,20 @@
 package com.food.delivery.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import java.math.BigDecimal;
 import java.util.List;
 
 /**
  * Created by mz on 17/07/17.
  */
+@XmlRootElement
 @Document
 public class Product {
 
@@ -22,6 +26,7 @@ public class Product {
     private String description;
     private BigDecimal price;
     private boolean active;
+    @JsonIgnore
     @Transient
     private MultipartFile image;
 
@@ -94,6 +99,7 @@ public class Product {
         this.active = active;
     }
 
+    @XmlTransient
     public MultipartFile getImage() {
         return image;
     }
