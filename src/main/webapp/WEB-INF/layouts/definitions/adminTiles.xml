@@ -41,16 +41,22 @@
         <put-attribute name="adminContent" value="/WEB-INF/views/addProduct.jsp"/>
     </definition>
 
-    <!--All products-->
+    <!-- Read all products-->
     <definition name="adminProducts" extends="adminBaseLayout">
         <put-attribute name="adminHeading" value="Add Products"/>
         <put-attribute name="adminContent" value="/WEB-INF/views/adminProducts.jsp"/>
     </definition>
 
-    <!--Single product-->
+    <!--Read product-->
     <definition name="adminProduct" extends="adminBaseLayout">
         <put-attribute name="adminHeading" value="Product"/>
         <put-attribute name="adminContent" value="/WEB-INF/views/adminProduct.jsp"/>
+    </definition>
+
+    <!--Update product-->
+    <definition name="updateProduct" extends="adminBaseLayout">
+        <put-attribute name="adminHeading" value="Update Product"/>
+        <put-attribute name="adminContent" value="/WEB-INF/views/updateProduct.jsp"/>
     </definition>
 
 </tiles-definitions>

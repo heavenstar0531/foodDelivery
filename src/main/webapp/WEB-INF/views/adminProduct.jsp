@@ -33,18 +33,13 @@
                class="btn btn-default"> <span
                     class="glyphicon-hand-left glyphicon"></span> back
             </a>
-           <%-- <p ng-controller="cartCtrl">
-                <a href="<spring:url value="/market/products" />"
-                   class="btn btn-default"> <span
-                        class="glyphicon-hand-left glyphicon"></span> back
-                </a> <a href="#" class="btn btn-warning btn-large"
-                        ng-click="addToCart('${product.productId}')"> <span
-                    class="glyphicon-shopping-cart glyphicon"></span> Order Now
-            </a> <a href="<spring:url value="/cart" />" class="btn btn-default">
-                <span class="glyphicon-hand-right glyphicon"></span> View Cart
+            <a href="<spring:url value="/admin/product/update?id=${product.id}" />"
+               class="btn btn-warning"> Edit
+            </a>
+            <a href="<spring:url value="/admin/product/delete?id=${product.id}" />"
+               class="btn btn-danger"> Delete
             </a>
 
-            </p>--%>
         </div>
     </div>
 </section>

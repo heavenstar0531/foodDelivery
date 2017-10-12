@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import java.io.File;
 
@@ -72,8 +71,7 @@ public class ProductController {
 
     @RequestMapping(value = "/admin/products/add", method = RequestMethod.GET)
     public String getAddNew(Model model) {
-        Product p = new Product();
-        model.addAttribute("newProduct", p);
+        model.addAttribute("newProduct", new Product());
         model.addAttribute("availableIngredients", ingredientService.findAll());
         return "addProduct";
     }
@@ -86,21 +84,55 @@ public class ProductController {
      */
     @RequestMapping(value = "/admin/products/add", method = RequestMethod.POST)
     public String processAddNew(@ModelAttribute Product newProduct, HttpServletRequest request) {
+        saveImageFile(newProduct, request);
+        productService.save(newProduct);
+        return "redirect:/admin/products/add";
+    }
 
+    @RequestMapping(value = "/admin/product/update", method = RequestMethod.GET)
+    public String getUpdate(@RequestParam("id") String id, Model model) {
+        model.addAttribute("updateProduct", productService.findOne(id));
+        model.addAttribute("availableIngredients", ingredientService.findAll());
+        return "updateProduct";
+    }
+
+    /**
+     * Updates an existing product.
+     *
+     * @param request - Used to get the application path in the server.
+     *                Spring will fill this request parameter with the actual HTTP request
+     */
+    @RequestMapping(value = "/admin/product/update", method = RequestMethod.POST)
+    public String processUpdate(@ModelAttribute Product updatedProduct, HttpServletRequest request) {
+        saveImageFile(updatedProduct, request);
+        productService.save(updatedProduct);
+        return "redirect:/admin/product?id=" + updatedProduct.getId();
+    }
+
+    @RequestMapping(value = "/admin/product/delete", method = RequestMethod.GET)
+    public String deleteProduct(@RequestParam("id") String id) {
+        productService.delete(id);
+        return "redirect:/admin/products";
+    }
+
+    /**
+     * Saves image of a product in the server.
+     *
+     * @param request - Used to get the application path in the server.
+     *                Spring will fill this request parameter with the actual HTTP request
+     */
+    private static void saveImageFile(Product product, HttpServletRequest request) {
         // Gets uploaded image
-        MultipartFile image = newProduct.getImage();
+        MultipartFile image = product.getImage();
         // The root directory of the application in the server
         String rootDirectory = request.getSession().getServletContext().getRealPath("/");
         if (image != null && !image.isEmpty()) {
             try {
                 // Saves the file in the server so it can be available under the root directory of the application at runtime
-                image.transferTo(new File(rootDirectory + "resources/images/" + newProduct.getId() + ".jpg"));
+                image.transferTo(new File(rootDirectory + "resources/images/" + product.getId() + ".jpg"));
             } catch (Exception e) {
                 throw new RuntimeException("Product Image saving failed", e);
             }
         }
-
-        productService.save(newProduct);
-        return "redirect:/admin/products/add";
     }
 }

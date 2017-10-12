@@ -30,8 +30,11 @@
             <%--Submit button--%>
             <div class="form-group">
                 <div class="col-lg-offset-2 col-lg-10">
-                    <input type="submit" id="btnAdd" class="btn btn-primary"
+                    <input type="submit" id="btnAdd" class="btn btn-success"
                            value="Add" />
+                    <a href="<spring:url value="/admin" />"
+                       class="btn btn-default"> Cancel
+                    </a>
                 </div>
             </div>
         </fieldset>

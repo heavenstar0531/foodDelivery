@@ -6,7 +6,7 @@
 --%>
 <section class="container">
     <%--uses multipart in enctype for file upload--%>
-    <form:form method="POST" modelAttribute="newProduct" class="form-horizontal" enctype="multipart/form-data">
+    <form:form method="POST" modelAttribute="updateProduct" class="form-horizontal" enctype="multipart/form-data">
         <fieldset>
             <legend>Form</legend>
                 <%--ID field--%>
@@ -40,16 +40,16 @@
             <div class="form-group">
                 <label class="control-label col-lg-2 col-lg-2" for="name">
                     <spring:message code="addProduct.form.productIngredients.label"/>
-                    <%--TODO: provide all available ingredients to create a product with multiple selection--%>
+                        <%--TODO: provide all available ingredients to create a product with multiple selection--%>
                 </label>
-                <%--checkboxes try--%>
-                <%--<ul>
-                    <form:checkboxes element="li" path="ingredients" items="${availableIngredients}"/>
-                </ul>--%>
-                <%--select try--%>
-                <%--<form:select path="ingredients" multiple="true">
-                    <form:options items="${availableIngredients}" itemValue="name" itemLabel="name"/>
-                </form:select>--%>
+                    <%--checkboxes try--%>
+                    <%--<ul>
+                        <form:checkboxes element="li" path="ingredients" items="${availableIngredients}"/>
+                    </ul>--%>
+                    <%--select try--%>
+                    <%--<form:select path="ingredients" multiple="true">
+                        <form:options items="${availableIngredients}" itemValue="name" itemLabel="name"/>
+                    </form:select>--%>
             </div>
                 <%--Description--%>
             <div class="form-group">
@@ -79,23 +79,24 @@
                     <form:radiobutton id="active" path="active" value="false"/> False
                 </div>
             </div>
-            <%--Image upload--%>
+                <%--Image upload--%>
             <div class="form-group">
                 <label class="control-label col-lg-2" for="image">
-                    <spring:message code="addProduct.form.productImage.label" />
+                    <spring:message code="addProduct.form.productImage.label"/>
                 </label>
                 <div class="col-lg-10">
-                    <form:input id="image" path="image" type="file" class="form:input-large" />
+                    <form:input id="image" path="image" type="file" class="form:input-large"/>
                 </div>
             </div>
                 <%--Submit button--%>
             <div class="form-group">
                 <div class="col-lg-offset-2 col-lg-10">
-                    <input type="submit" id="btnAdd" class="btn btn-success" value="Add"/>
-                    <a href="<spring:url value="/admin" />"
+                    <input type="submit" id="btnAdd" class="btn btn-success" value="Update"/>
+                    <a href="<spring:url value="/admin/products?id=${updateProduct.id}" />"
                        class="btn btn-default"> Cancel
                     </a>
                 </div>
+            </div>
             </div>
         </fieldset>
     </form:form>

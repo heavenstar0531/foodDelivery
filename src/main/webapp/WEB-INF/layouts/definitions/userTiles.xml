@@ -42,4 +42,11 @@
         <put-attribute name="userContent" value="/WEB-INF/views/products.jsp"/>
     </definition>
 
+    <!--Shopping Cart-->
+    <definition name="cart" extends="userBaseLayout">
+        <put-attribute name="userHeading" value="Your shopping cart"/>
+        <put-attribute name="userTag" value=""/>
+        <put-attribute name="userContent" value="/WEB-INF/views/cart.jsp"/>
+    </definition>
+
 </tiles-definitions>
