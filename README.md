@@ -18,7 +18,7 @@
 
 <p>This project handles dependencies with Maven. For more details, see <i>pom.xml</i> file.</p>
 
-<p>The IDE used for this project is IntellijIDEA from Jetbrains (https://www.jetbrains.com). I believe you can run with others IDE without much problems.</p>
+<p>The IDE used for this project is IntellijIDEA 2017 from Jetbrains (https://www.jetbrains.com). I believe you can run with others IDE without much problems.</p>
 
 <h2>UML</h2>
 

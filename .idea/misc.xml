@@ -74,6 +74,8 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
+        <option value="$PROJECT_DIR$/FoodDeliveryModule/pom.xml" />
+        <option value="$PROJECT_DIR$/fooddelivery/pom.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>

@@ -1,4 +1,4 @@
-package controller;
+package com.food.delivery.controller;
 
 import com.food.delivery.config.WebAppConfig;
 import com.food.delivery.model.Ingredient;

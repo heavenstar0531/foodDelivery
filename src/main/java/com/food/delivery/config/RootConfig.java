@@ -30,14 +30,14 @@ public class RootConfig {
     private static Ingredient INGREDIENT_07 = new Ingredient("ING-7", "Sugar");
 
     public static final List<Ingredient> INGREDIENTS_01 = Arrays.asList(
-        INGREDIENT_01, INGREDIENT_02, INGREDIENT_03, INGREDIENT_04, INGREDIENT_05
+            INGREDIENT_01, INGREDIENT_02, INGREDIENT_03, INGREDIENT_04, INGREDIENT_05
     );
 
     public static final List<Ingredient> INGREDIENTS_02 = Arrays.asList(
             INGREDIENT_06, INGREDIENT_05, INGREDIENT_07);
 
-        public static final Product PRODUCT_01 = new Product("P1", "Avocado Fruit Shake 500mL",
-            INGREDIENTS_01,"An awesome avocado shake with all potassium you need",
+    public static final Product PRODUCT_01 = new Product("P1", "Avocado Fruit Shake 500mL",
+            INGREDIENTS_01, "An awesome avocado shake with all potassium you need",
             new BigDecimal(6), "Drink", true);
 
     public static final Product PRODUCT_02 = new Product("P2", "Mixed Fruit Shake 500mL",

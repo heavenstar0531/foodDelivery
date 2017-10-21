@@ -8,6 +8,8 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 
 /**
  * Created by mz on 14/07/17.
+ * <p>
+ * Make sure to start MongoDB service before running this project.
  */
 @Configuration
 @EnableMongoRepositories(basePackages = "com.food.delivery")

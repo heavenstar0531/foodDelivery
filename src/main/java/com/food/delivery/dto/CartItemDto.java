@@ -20,6 +20,7 @@ public class CartItemDto {
     public CartItemDto(String id, String productId) {
         this.id = id;
         this.productId = productId;
+        this.quantity = 1;
     }
 
     public CartItemDto(String id, String productId, int quantity) {
