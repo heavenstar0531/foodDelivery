@@ -1,24 +1,23 @@
 package com.food.delivery.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.io.Serializable;
+import javax.persistence.*;
 
 /**
  * Created by mz on 14/07/17.
  * <p>
  * One or more ingredients are part of a food.
  */
-@Document
+@Entity
+@Table(name = "ingredient")
 public class Ingredient {
 
     @Id
     private String id;
+    @Column(length = 50)
     private String name;
 
     public Ingredient() {
-        super();
+
     }
 
     public Ingredient(String id, String name) {

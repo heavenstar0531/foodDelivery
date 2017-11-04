@@ -45,6 +45,6 @@ public class RootConfig {
             new BigDecimal(8), "Drink", true);
 
     public static final Product PRODUCT_03 = new Product("P0", "ShouldNotAppearProduct",
-            INGREDIENTS_02, "This is an description of an product that should not be visible for users because is not active",
+            INGREDIENTS_02, "This product should not be visible for users because it is not active",
             new BigDecimal(8), "Drink", false);
 }

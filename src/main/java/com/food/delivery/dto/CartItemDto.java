@@ -1,20 +1,25 @@
 package com.food.delivery.dto;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * Created by mz on 19/07/17.
  * <p>
  * Data Transfer Object (DTO) for CartItem class.
  */
+@Entity
+@Table(name = "cart_item_dto")
 public class CartItemDto {
 
+    @Id
     private String id;
     private String productId;
     private int quantity;
 
-    /**
-     * Empty constructor required for persistence framework
-     */
     public CartItemDto() {
+        // Empty constructor required for persistence framework
     }
 
     public CartItemDto(String id, String productId) {
@@ -52,3 +57,4 @@ public class CartItemDto {
         this.quantity = quantity;
     }
 }
+

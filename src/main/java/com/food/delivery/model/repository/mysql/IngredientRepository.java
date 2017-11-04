@@ -1,13 +1,10 @@
-package com.food.delivery.service;
+package com.food.delivery.model.repository.mysql;
 
 import com.food.delivery.model.Ingredient;
 
 import java.util.List;
 
-/**
- * Created by mz on 14/07/17.
- */
-public interface IngredientService {
+public interface IngredientRepository {
 
     void create(Ingredient i);
 
@@ -18,4 +15,5 @@ public interface IngredientService {
     void delete(String id);
 
     List<Ingredient> readAll();
+
 }

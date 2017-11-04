@@ -26,13 +26,14 @@ public class IngredientController {
         this.ingredientService = ingredientService;
 
         // temporary data for manual testing purpose
-        ingredientService.save(RootConfig.INGREDIENTS_01);
-        ingredientService.save(RootConfig.INGREDIENTS_02);
+//        ingredientService.create(RootConfig.INGREDIENTS_01);
+//        ingredientService.create(RootConfig.INGREDIENTS_02);
+        RootConfig.INGREDIENTS_01.forEach(ingredientService::create);
     }
 
     @RequestMapping
     public String readAll(Model model) {
-        List<Ingredient> ingredientsFromMongo = ingredientService.findAll();
+        List<Ingredient> ingredientsFromMongo = ingredientService.readAll();
         model.addAttribute("ingredients", ingredientsFromMongo);
         return "adminIngredients";
     }
@@ -46,7 +47,7 @@ public class IngredientController {
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String processAddNew(@ModelAttribute Ingredient newIngredient) {
-        ingredientService.save(newIngredient);
+        ingredientService.create(newIngredient);
         return "redirect:/admin/ingredients/add";
     }
 }

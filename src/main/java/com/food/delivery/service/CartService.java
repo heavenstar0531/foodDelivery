@@ -1,3 +1,4 @@
+
 package com.food.delivery.service;
 
 import com.food.delivery.dto.CartDto;
@@ -5,16 +6,18 @@ import com.food.delivery.model.Cart;
 
 import java.util.List;
 
+
 /**
  * Created by mz on 19/07/17.
  */
+
 public interface CartService {
 
-    void save(CartDto c);
+    void create(CartDto c);
 
-    void save(Iterable<CartDto> it);
+    Cart read(String id);
 
-    Cart findOne(String id);
+    void update(CartDto c);
 
     void delete(String id);
 
@@ -22,3 +25,4 @@ public interface CartService {
 
     void removeItem(String cartId, String productId);
 }
+

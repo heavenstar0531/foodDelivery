@@ -3,7 +3,7 @@ package com.food.delivery.service.impl;
 import com.food.delivery.dto.CartDto;
 import com.food.delivery.dto.CartItemDto;
 import com.food.delivery.model.Cart;
-import com.food.delivery.model.repository.CartRepository;
+import com.food.delivery.model.repository.mysql.CartRepository;
 import com.food.delivery.service.CartService;
 import com.food.delivery.service.ProductService;
 import com.food.delivery.util.CartFactory;
@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 /**
  * Created by mz on 19/07/17.
  */
+
 @Service
 public class CartServiceImpl implements CartService {
 
@@ -26,22 +27,22 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public void save(CartDto c) {
-        cartRepository.save(c);
+    public void create(CartDto c) {
+        cartRepository.create(c);
     }
 
     @Override
-    public void save(Iterable<CartDto> it) {
-        cartRepository.save(it);
-    }
-
-    @Override
-    public Cart findOne(String id) {
-        CartDto cartDto = cartRepository.findOne(id);
+    public Cart read(String id) {
+        CartDto cartDto = cartRepository.read(id);
         if(cartDto != null) {
             return CartFactory.create(cartDto, productService);
         }
         return null;
+    }
+
+    @Override
+    public void update(CartDto c) {
+        cartRepository.update(c);
     }
 
     @Override
@@ -51,7 +52,7 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public void addItem(String cartId, String productId) {
-        CartDto cart = cartRepository.findOne(cartId);
+        CartDto cart = cartRepository.read(cartId);
         if (cart == null) {
             // Cart does not exist, so creates a new cart item
             CartItemDto item = new CartItemDto(cartId + productId, productId);
@@ -59,7 +60,7 @@ public class CartServiceImpl implements CartService {
             cart = new CartDto(cartId);
             cart.addCartItem(item);
             // update database
-            save(cart);
+            create(cart);
             return;
         }
 
@@ -70,16 +71,17 @@ public class CartServiceImpl implements CartService {
             item.setQuantity(item.getQuantity() + 1);
         }
         // update database
-        save(cart);
+        create(cart);
     }
 
     @Override
     public void removeItem(String cartId, String productId) {
-        CartDto cartDto = cartRepository.findOne(cartId);
+        CartDto cartDto = cartRepository.read(cartId);
         CartItemDto cartItemDto = cartDto.getCartItems().stream().filter(item -> item.getProductId().equals(productId)).findAny().orElse(null);
         cartDto.getCartItems().remove(cartItemDto);
         // update database
-        save(cartDto);
+        create(cartDto);
     }
 
 }
+

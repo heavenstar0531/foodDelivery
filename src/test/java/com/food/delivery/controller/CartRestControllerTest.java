@@ -1,3 +1,4 @@
+/*
 package com.food.delivery.controller;
 
 import com.food.delivery.config.WebAppConfig;
@@ -69,6 +70,7 @@ public class CartRestControllerTest {
 
     // TODO: Test REST services
 
+*/
 /*    @Test
     public void readShouldReturnCorrectCartJson() throws Exception {
         // Arrange
@@ -77,16 +79,19 @@ public class CartRestControllerTest {
         // Action
         this.mockMvc.perform(get("/rest/cart/" + session.getId()).session(session)).andExpect(status().isOk()).
                 andExpect(jsonPath("$.cartItems[0].product.productId").value("P1"));
-    }*/
+    }*//*
+
 
     @Test
     public void readShouldReturnValueOfEarlyPost() throws Exception {
-         /*Action
+         */
+/*Action
         mockMvc.perform(get("/rest/cart/111")).andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value("111"));
 
-        String cartJson = json(cart)*/
+        String cartJson = json(cart)*//*
+
     }
 
 
-}
+}*/

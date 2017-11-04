@@ -22,6 +22,7 @@ import static java.util.stream.Collectors.toList;
 /**
  * Created by mz on 17/07/17.
  */
+
 @Controller
 public class ProductController {
 
@@ -34,20 +35,20 @@ public class ProductController {
         this.ingredientService = ingredientService;
 
         // temporary data for manual testing purpose
-        productService.save(RootConfig.PRODUCT_01);
-        productService.save(RootConfig.PRODUCT_02);
-        productService.save(RootConfig.PRODUCT_03);
+        productService.create(RootConfig.PRODUCT_01);
+        productService.create(RootConfig.PRODUCT_02);
+        productService.create(RootConfig.PRODUCT_03);
     }
 
     @RequestMapping("/product")
     public String getProductById(@RequestParam("id") String id, Model model) {
-        model.addAttribute("product", productService.findOne(id));
+        model.addAttribute("product", productService.read(id));
         return "product";
     }
 
     @RequestMapping("/admin/product")
     public String getProductByIdForAdmin(@RequestParam("id") String id, Model model) {
-        model.addAttribute("product", productService.findOne(id));
+        model.addAttribute("product", productService.read(id));
         return "adminProduct";
     }
 
@@ -56,7 +57,7 @@ public class ProductController {
      */
     @RequestMapping("/products")
     public String readAll(Model model) {
-        model.addAttribute("products", productService.findAll().stream().filter(Product::isActive).collect(toList()));
+        model.addAttribute("products", productService.readAll().stream().filter(Product::isActive).collect(toList()));
         return "products";
     }
 
@@ -65,14 +66,14 @@ public class ProductController {
      */
     @RequestMapping(value = "/admin/products")
     public String readAllForAdmin(Model model) {
-        model.addAttribute("products", productService.findAll());
+        model.addAttribute("products", productService.readAll());
         return "adminProducts";
     }
 
     @RequestMapping(value = "/admin/products/add", method = RequestMethod.GET)
     public String getAddNew(Model model) {
         model.addAttribute("newProduct", new Product());
-        model.addAttribute("availableIngredients", ingredientService.findAll());
+        model.addAttribute("availableIngredients", ingredientService.readAll());
         return "addProduct";
     }
 
@@ -85,16 +86,17 @@ public class ProductController {
     @RequestMapping(value = "/admin/products/add", method = RequestMethod.POST)
     public String processAddNew(@ModelAttribute Product newProduct, HttpServletRequest request) {
         saveImageFile(newProduct, request);
-        productService.save(newProduct);
+        productService.create(newProduct);
         return "redirect:/admin/products/add";
     }
 
     @RequestMapping(value = "/admin/product/update", method = RequestMethod.GET)
     public String getUpdate(@RequestParam("id") String id, Model model) {
-        model.addAttribute("updateProduct", productService.findOne(id));
-        model.addAttribute("availableIngredients", ingredientService.findAll());
+        model.addAttribute("updateProduct", productService.read(id));
+        model.addAttribute("availableIngredients", ingredientService.readAll());
         return "updateProduct";
     }
+
 
     /**
      * Updates an existing product.
@@ -105,7 +107,7 @@ public class ProductController {
     @RequestMapping(value = "/admin/product/update", method = RequestMethod.POST)
     public String processUpdate(@ModelAttribute Product updatedProduct, HttpServletRequest request) {
         saveImageFile(updatedProduct, request);
-        productService.save(updatedProduct);
+        productService.update(updatedProduct);
         return "redirect:/admin/product?id=" + updatedProduct.getId();
     }
 

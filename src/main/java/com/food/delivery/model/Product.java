@@ -1,11 +1,9 @@
 package com.food.delivery.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Transient;
-import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import java.math.BigDecimal;
@@ -15,13 +13,16 @@ import java.util.List;
  * Created by mz on 17/07/17.
  */
 @XmlRootElement
-@Document
+@Entity
+@Table(name = "product")
 public class Product {
 
     @Id
     private String id;
     private String name;
     private String category;
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "product", targetEntity = Ingredient.class)
+    @Transient
     private List<Ingredient> ingredients;
     private String description;
     private BigDecimal price;
@@ -31,6 +32,7 @@ public class Product {
     private MultipartFile image;
 
     public Product() {
+        // Empty constructor for persistence framework
     }
 
     public Product(String id, String name, List<Ingredient> ingredients, String description, BigDecimal price, String category, boolean active) {
@@ -59,6 +61,12 @@ public class Product {
         this.name = name;
     }
 
+    /*@OneToMany
+    @JoinTable(
+            name="ingredients",
+            joinColumns = @JoinColumn( name="product"),
+            inverseJoinColumns = @JoinColumn( name="ingredient")
+    )*/
     public List<Ingredient> getIngredients() {
         return ingredients;
     }

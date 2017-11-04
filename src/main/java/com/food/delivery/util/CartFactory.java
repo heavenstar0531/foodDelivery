@@ -1,3 +1,4 @@
+
 package com.food.delivery.util;
 
 import com.food.delivery.dto.CartDto;
@@ -18,15 +19,17 @@ public class CartFactory {
     /**
      * Creates a Cart object from a DTO version
      */
+
     public static Cart create(CartDto cartDto, ProductService productService) {
         List<CartItem> cartItems = new ArrayList<>();
         Cart cart = new Cart(cartDto.getId(), cartItems);
 
         cartDto.getCartItems().forEach(cartItemDto -> {
-            Product p = productService.findOne(cartItemDto.getProductId());
+            Product p = productService.read(cartItemDto.getProductId());
             cartItems.add(new CartItem(cartItemDto.getId(), p, cartItemDto.getQuantity()));
         });
 
         return cart;
     }
 }
+

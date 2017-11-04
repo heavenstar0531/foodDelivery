@@ -1,13 +1,10 @@
-package com.food.delivery.service;
+package com.food.delivery.model.repository.mysql;
 
 import com.food.delivery.model.Product;
 
 import java.util.List;
 
-/**
- * Created by mz on 17/07/17.
- */
-public interface ProductService {
+public interface ProductRepository {
 
     void create(Product p);
 

@@ -1,26 +1,31 @@
 package com.food.delivery.dto;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * Created by mz on 19/07/17.
  * <p>
  * Data Transfer Object (DTO) for Cart class.
  */
-@Document
+@Entity
+@Table(name = "cart_dto")
 public class CartDto {
 
     @Id
     private String id;
+    @Transient
     private List<CartItemDto> cartItems;
 
-    /**
+/**
      * Empty constructor required for persistence framework
      */
+
     public CartDto() {
     }
 
@@ -54,3 +59,4 @@ public class CartDto {
         this.cartItems.add(cartItemDto);
     }
 }
+

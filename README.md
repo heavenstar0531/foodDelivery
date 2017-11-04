@@ -4,13 +4,19 @@
 
 <h2>Dependencies</h2>
 
-**Back-end Framework**: Spring 4.3.9 - https://spring.io/projects
+**Back-end Framework**<br> 
+Spring 4.3.9 - https://spring.io/projects <br>
+Hibernate 5.2.12 - http://hibernate.org/orm/ <br>
 
 <h3>Installed</h3>
 
 **Server**: Apache Tomcat 8.5 - http://tomcat.apache.org/
 
-**Database**: MongoDB 3.4.9 - https://docs.mongodb.com/manual/
+**Database**: <br>
+MySQL 5.7.2 - https://dev.mysql.com/<br>
+~~MongoDB 3.4.9 - https://docs.mongodb.com/manual/~~ - Deactivated <br> 
+
+Make sure the database is running before starting the application.
 
 **Language**: Java 8 - http://www.oracle.com/technetwork/pt/java/javase/overview/index.html
 
