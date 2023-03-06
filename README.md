@@ -24,8 +24,6 @@ Make sure the database is running before starting the application.
 
 <p>This project handles dependencies with Maven. For more details, see <i>pom.xml</i> file.</p>
 
-<p>The IDE used for this project is IntellijIDEA 2017 from Jetbrains (https://www.jetbrains.com). I believe you can run with others IDE without much problems.</p>
-
 <h2>UML</h2>
 
 <h3>Use Case Diagram</h3>
